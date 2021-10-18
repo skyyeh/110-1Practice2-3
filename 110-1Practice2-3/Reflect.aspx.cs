@@ -11,51 +11,28 @@ namespace _110_1Practice2_3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            int i_M = 663166;
-            int a = 1;
-            int i_countNum = 1;
-            int rm = 10;
-            for (int i = 0; i < a; i++)
+
+            int M = 663166;
+            int M2 = 0; 
+            int rev_M = 0;
+            int sum = 0;
+
+            M2 = M;
+
+
+            while (M != 0)
             {
-                if ((i_M / rm) > 0)
-                {
-                    a += 1;
-                    rm = rm * 10;
-                }
+                sum = M % 10;
+                rev_M = rev_M * 10 + sum;
+                M = M / 10;
             }
-            if (a == 1)
-            {
-                Response.Write("False");
-            }
-            if (a <= 8)
-            {
-                if ((int)(i_M / Math.Pow(10, (a - 1))) !=
-                    (int)(i_M % Math.Pow(10, 2) % 10))
-                {
-                    Response.Write("False");
-                }
-                else
-                {
-                    for (int i = 2; i <= (a / 2); i++)
-                    {
-                        if ((int)(i_M % Math.Pow(10, a + 1 - i) / Math.Pow(10, (a - i))) ==
-                            (int)(i_M % Math.Pow(10, i) / Math.Pow(10, i - 1)))
-                        {
-                            i_countNum += 1;
-                            continue;
-                        }
-                        else
-                        {
-                            Response.Write("False");
-                            break;
-                        }
-                    }
-                }
-                if (i_countNum == a / 2)
-                {
-                    Response.Write("True");
-                }
-            }
+
+            if (M2 == rev_M)
+                Response.Write("True");
+            else
+                Response.Write("Flase");
+
+
         }
     }
 }
